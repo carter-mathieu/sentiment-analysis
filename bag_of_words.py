@@ -57,34 +57,26 @@ def text_preprocessing(data):
         r = [lemmatizer.lemmatize(word) for word in r]
 
         # bring the words back to eden and join them into a single string
-        r = ' '.join(r)
+        # r = ' '.join(r)
 
-        # put the cleaned response into the corpus list
+        # put the cleaned response back to eden
         corpus.append(r)
     
     # give corpus back to the word
     return corpus
 
+def generate_bag_of_words(text_data):
+    dictionary = corpora.Dictionary(text_data)
+    print(dictionary)
+    corpus = [dictionary.doc2bow(text) for text in text_data]
+    return corpus
+
 # its cleaning time
 data['RESPONSE'] = text_preprocessing(data['RESPONSE'])
-
 data.to_csv(r'C:\Users\carte\Documents\project-repos\sentiment-analysis\cleaned_roseland_responses.csv')
 print(data.head())
 
-def generate_bag_of_words(text_data):
-    text_list = list(text_data)
-    print(text_list)
-    # token_text = []
-    # for item in range(len(text_list)):
-    #     token = []
-    #     item = item.split()
-    #     for i in item:
-    #         token.append(i)
-    #     token_text.append(token)
-        
-    # dictionary = corpora.Dictionary(token_text)
-    # print(dictionary)
-    #corpus = [dictionary.doc2bow(text) for text in text]
-    #print(corpus)
-
+# "I have a bag of words, I have a bag of words" - CAPTAIN Jack Sparrow, 2006
 data['RESPONSE'] = generate_bag_of_words(data['RESPONSE'])
+data.to_csv(r'C:\Users\carte\Documents\project-repos\sentiment-analysis\cleaned_roseland_responses.csv')
+print(data.head())
