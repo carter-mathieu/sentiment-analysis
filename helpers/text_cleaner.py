@@ -1,4 +1,5 @@
 import regex as re
+from nltk.corpus import stopwords
 
 # function to clean the text before feeding to model
 def text_cleaner(data):
@@ -8,6 +9,10 @@ def text_cleaner(data):
     # create list to hold cleaned response text
     corpus_string = []
 
+    # define the stopwords to check for
+    sw = stopwords.words("english")
+
+    # define regex to use
     regex = r'[^a-zA-Z0-9!?.,\s]'
 
     # loop through the text list apply the oxyclean to each response
