@@ -3,7 +3,7 @@ import sys
 from nltk import tokenize
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-sys.path.append(r'C:\Users\carte\Documents\project-repos\sentiment-analysis')
+sys.path.append(r'..\sentiment-analysis')
 from helpers.classifier import classifier
 from helpers.text_cleaner import text_cleaner
 from helpers.visualizers import get_normal_distribution, get_histogram, get_stacked_barchart
@@ -37,7 +37,7 @@ def get_sentiment(corpus):
         return 0
 
 # read in the data and drop and rename columns
-data = pd.read_csv(r'C:\Users\carte\Documents\project-repos\sentiment-analysis\datasets\kaggle_dataset.csv')
+data = pd.read_csv(r'..\sentiment-analysis\datasets\kaggle_dataset.csv')
 data = data.iloc[:, :2]
 data.columns = ['label', 'text']
    
