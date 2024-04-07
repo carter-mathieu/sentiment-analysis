@@ -59,5 +59,5 @@ print(data.head())
 norm_dist = get_normal_distribution(data['score'])
 
 # visualize the sentiment results
-get_histogram(data['sentiment'], norm_dist[0], norm_dist[1])
+get_histogram(data['score'], norm_dist[0], norm_dist[1])
 get_stacked_barchart(data, 'label', 'sentiment')
